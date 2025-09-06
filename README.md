@@ -1,104 +1,173 @@
-# Cpp-Util-Library
-A lightweight collection of reusable C++ helper functions for randomization, encryption, swapping, validation, arrays, and more.
+# clsUtil - Utility Functions in C++ 🛠️
 
-clsUtil – A Handy C++ Utility Library
-=====================================
+The **`clsUtil`** class provides a wide collection of **helper and utility functions** in C++.  
+It covers **random generation 🎲, encryption 🔒, swapping ↔️, validation ✅, shuffling 🔀, Fibonacci sequence 🌀, and more!**
 
-A lightweight collection of reusable C++ helper functions for randomization, encryption, swapping, validation, arrays, and more.  
-Perfect for students and developers who want ready-made utilities to speed up coding projects.  
+---
 
-------------------------------------------------------------
-Features
-------------------------------------------------------------
-- Random number and character generation
-- Text encryption and decryption
-- Key and word generation
-- Swap support for multiple types
-- Array filling and shuffling
-- Safe input validation for numbers
-- Console utilities (clear screen, color reset)
-- Fibonacci sequence printing with recursion
+## 📌 Features
 
-------------------------------------------------------------
-File Structure
-------------------------------------------------------------
-project/
-│── clsUtil.h     # Utility class header
-│── clsDate.h     # (Required dependency for Swap function)
-│── main.cpp      # Example usage
+- 🎲 **Random utilities**  
+  - Generate random numbers within a range  
+  - Get random characters of different types (letters, digits, symbols)  
+  - Generate random words and keys  
 
-------------------------------------------------------------
-Installation & Usage
-------------------------------------------------------------
-1. Clone the repository:
-   git clone https://github.com/Faresincode/clsUtil.git
-   cd clsUtil
+- 🔒 **Encryption & Decryption**  
+  - Simple character shifting for text encryption and decryption  
 
-2. Include the header file in your project:
-   #include "clsUtil.h"
+- 🛠️ **Array & Value Manipulation**  
+  - Swap values of different types (`int`, `float`, `short`, `double`, `long long`, `string`, `clsDate`)  
+  - Shuffle arrays of numbers and strings  
+  - Fill arrays with random numbers, words, or keys  
 
-3. Initialize random seed before using random functions:
-   clsUtil::Srand();
+- ✅ **Validation**  
+  - Verify numeric input (int, float, double, etc.)  
+  - Prevent invalid inputs in console apps  
 
-4. Compile with any modern C++ compiler:
-   g++ main.cpp -o program
-   ./program
+- 🔢 **Math Helpers**  
+  - Fibonacci sequence generation (using recursion)  
+  - Operator and level mapping helpers  
 
-------------------------------------------------------------
-Example Applications and Outputs
-------------------------------------------------------------
+- 🎨 **Console Utilities**  
+  - Reset console screen and colors  
 
-[Example 1] Random Number & Key Generation
-------------------------------------------
-Code:
+---
+
+## 📂 File Structure
+
+- **`clsUtil.h`** → Main header file containing the `clsUtil` class.  
+- **`clsDate.h`** → Dependency used for swapping `clsDate` objects.  
+- **`main.cpp`** → Example usage and test file.  
+
+---
+
+## 🚀 Example Usage
+
+### Example 1: Generate a Random Number
+
+```cpp
+#include <iostream>
+#include "clsUtil.h"
+
+int main() {
     clsUtil::Srand();
-    cout << "Random number: " << clsUtil::RandomNumber(1, 100) << endl;
-    cout << "Generated Key: " << clsUtil::GenerateKey() << endl;
+    std::cout << "Random Number: " << clsUtil::RandomNumber(1, 100) << std::endl;
+    return 0;
+}
+```
 
-Sample Output:
-    Random number: 57
-    Generated Key: AXKD-ZPLQ-MNBV-QWER
+**Output (example run):**
+```
+Random Number: 57
+```
 
+---
 
-[Example 2] Encryption & Decryption
------------------------------------
-Code:
-    string msg = "Hello";
-    string enc = clsUtil::EncryptText(msg, 3);
-    string dec = clsUtil::DecryptText(enc, 3);
-    cout << "Original: " << msg << endl;
-    cout << "Encrypted: " << enc << endl;
-    cout << "Decrypted: " << dec << endl;
+### Example 2: Generate Random Key
 
-Sample Output:
-    Original: Hello
-    Encrypted: Khoor
-    Decrypted: Hello
+```cpp
+#include <iostream>
+#include "clsUtil.h"
 
+int main() {
+    std::string key = clsUtil::GenerateKey();
+    std::cout << "Generated Key: " << key << std::endl;
+    return 0;
+}
+```
 
-[Example 3] Fibonacci Sequence
--------------------------------
-Code:
-    cout << "Fibonacci: ";
-    clsUtil::PrintFibonacciUsingRecursion(5, 0, 1);
-    cout << endl;
+**Output (example run):**
+```
+Generated Key: XJDP-FGHK-QWER-TYUI
+```
 
-Sample Output:
-    Fibonacci: 1 2 3 5 8
+---
 
+### Example 3: Encrypt and Decrypt Text
 
-[Example 4] Array Shuffle
---------------------------
-Code:
+```cpp
+#include <iostream>
+#include "clsUtil.h"
+
+int main() {
+    std::string text = "Hello";
+    std::string encrypted = clsUtil::EncryptText(text, 3);
+    std::string decrypted = clsUtil::DecryptText(encrypted, 3);
+
+    std::cout << "Original: " << text << std::endl;
+    std::cout << "Encrypted: " << encrypted << std::endl;
+    std::cout << "Decrypted: " << decrypted << std::endl;
+    return 0;
+}
+```
+
+**Output:**
+```
+Original: Hello
+Encrypted: Khoor
+Decrypted: Hello
+```
+
+---
+
+### Example 4: Shuffle an Array
+
+```cpp
+#include <iostream>
+#include "clsUtil.h"
+
+int main() {
     int arr[5] = {1, 2, 3, 4, 5};
     clsUtil::ShuffleArray(arr, 5);
-    for (int i = 0; i < 5; i++) cout << arr[i] << " ";
+    for (int i = 0; i < 5; i++)
+        std::cout << arr[i] << " ";
+    std::cout << std::endl;
+    return 0;
+}
+```
 
-Sample Output:
-    3 1 5 2 4
+**Output (example run):**
+```
+3 1 5 4 2
+```
 
+---
 
-------------------------------------------------------------
-License
-------------------------------------------------------------
-This project is open-source and available under the MIT License.
+### Example 5: Fibonacci Using Recursion
+
+```cpp
+#include <iostream>
+#include "clsUtil.h"
+
+int main() {
+    std::cout << "Fibonacci Sequence: ";
+    clsUtil::PrintFibonacciUsingRecursion(7, 0, 1);
+    return 0;
+}
+```
+
+**Output:**
+```
+Fibonacci Sequence: 1 2 3 5 8 13 21
+```
+
+---
+
+## 🔧 Requirements
+
+- C++ compiler supporting **C++11 or later**
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License.  
+Feel free to use, modify, and share it with proper attribution 🙌
+
+---
+
+## 🤝 Contribution
+
+Contributions are welcome!  
+Fork 🍴 the repo, create a branch 🌱, and submit a pull request 🔀.
+
